@@ -1,4 +1,4 @@
-package composite.Problem_6;
+package Composite.Problem_6;
 
 import java.util.ArrayList;
 import java.util.List;

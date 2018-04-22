@@ -1,4 +1,4 @@
-package composite.Problem_6;
+package Composite.Problem_6;
 
 public class Rectangle extends Figure {
 

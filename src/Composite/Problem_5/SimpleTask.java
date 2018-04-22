@@ -1,4 +1,4 @@
-package composite.Problem_5;
+package Composite.Problem_5;
 
 public class SimpleTask implements Task {
 
