@@ -1,4 +1,4 @@
-package composite;
+package composite.Problem_5;
 
 public interface Task {
     public double costInEuros ();
