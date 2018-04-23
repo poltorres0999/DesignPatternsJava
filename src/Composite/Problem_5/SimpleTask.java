@@ -1,17 +1,19 @@
 package Composite.Problem_5;
 
+import java.math.BigDecimal;
+
 public class SimpleTask implements Task {
 
-    private double cost;
+    private Money cost;
     private int duration;
 
-    public SimpleTask (double cost, int duration) {
+    public SimpleTask (Money cost, int duration) {
         this.cost = cost;
         this.duration = duration;
     }
 
     @Override
-    public double costInEuros() {
+    public Money costInEuros() {
         return this.cost;
     }
 

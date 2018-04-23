@@ -5,17 +5,16 @@ import java.util.List;
 
 public class ComplexTask implements Task {
 
-    private double cost;
+    private Money cost;
     private int duration;
     private List<Task> taskList = new ArrayList<>();
 
     @Override
-    public double costInEuros() {
+    public Money costInEuros() {
 
         for (Task t: this.taskList) {
-            this.cost += t.costInEuros();
+            this.cost.increase(t.costInEuros().getCurrency());
         }
-
         return this.cost;
     }
 
