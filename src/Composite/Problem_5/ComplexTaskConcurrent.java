@@ -1,11 +1,7 @@
 package Composite.Problem_5;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class ComplexTaskSequential extends ComplexTask {
-
-    public ComplexTaskSequential(Money money, int duration) {
+public class ComplexTaskConcurrent extends ComplexTask {
+    public ComplexTaskConcurrent(Money money, int duration) {
         super(money, duration);
     }
 
@@ -18,14 +14,13 @@ public class ComplexTaskSequential extends ComplexTask {
         return this.cost;
     }
 
-
     @Override
     public int durationInDays() {
+
+        int max = 0;
         for (Task t: this.taskList) {
-            this.duration += t.durationInDays();
+            if (t.durationInDays() > max) max = t.durationInDays();
         }
-
-        return this.duration;
+        return max;
     }
-
 }
