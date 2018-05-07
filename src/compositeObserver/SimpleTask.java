@@ -1,8 +1,6 @@
-package Composite.Problem_5;
+package compositeObserver;
 
-import java.util.Observable;
-
-public class SimpleTask implements Task {
+public class SimpleTask extends Task {
 
     private Money cost;
     private int duration;
@@ -26,6 +24,8 @@ public class SimpleTask implements Task {
     public void finalize () {
         if (!finalized) {
             this.finalized = true;
+            setChanged();
+            notifyObservers();
         }
     }
 
