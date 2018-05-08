@@ -10,7 +10,7 @@ public class NutritionFacts {
 	private int sodium;
 	private int carbohydrate;
 
-	public NutritionFacts(NutritionFactsBuilder builder) {
+	private NutritionFacts(NutritionFactsBuilder builder) {
 		this.servingSize = builder.servingSize;
 		this.servings = builder.servings;
 		this.calories = builder.calories;
