@@ -1,20 +1,23 @@
 package Obvserver.Problem7;
 
+import java.util.Observer;
+
 public class Register {
 
     private static final String logPath = "";
 
     private Store store;
     private Sale currentSale;
-    private concreteObserver cObserver;
 
     public Register(Store store) {
         this.store = store;
-        this.cObserver = new concreteObserver(logPath);
     }
 
     public void createNewSale() {
         currentSale = new Sale();
-        currentSale.addObserver(cObserver);
+    }
+
+    public void addObserverToCurrentSale(concreteObserver obs) {
+        currentSale.addObserver(obs);
     }
 }
