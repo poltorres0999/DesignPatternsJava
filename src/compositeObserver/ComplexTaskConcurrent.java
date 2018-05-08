@@ -27,11 +27,6 @@ public class ComplexTaskConcurrent extends ComplexTask {
     }
 
     @Override
-    public boolean hasFinalized() {
-        return false;
-    }
-
-    @Override
     public void update(Observable o, Object arg) {
 
         Task t = (Task) o;

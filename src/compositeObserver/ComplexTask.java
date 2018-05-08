@@ -29,5 +29,12 @@ public abstract class ComplexTask extends Task implements Observer {
 
     }
 
+    public boolean hasFinalized () {
+        for (Task t: this.currentTasks) {
+            if(!t.hasFinalized()) return false;
+        }
+        return true;
+    }
+
 
 }

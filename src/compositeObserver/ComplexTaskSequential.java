@@ -1,7 +1,5 @@
 package compositeObserver;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Observable;
 
 public class ComplexTaskSequential extends ComplexTask {
@@ -13,10 +11,12 @@ public class ComplexTaskSequential extends ComplexTask {
 
     @Override
     public void addSubTask(Task task) {
+
+        boolean wasFinalized = this.hasFinalized();
         this.taskList.add(task);
         task.addObserver(this);
 
-        if (!task.hasFinalized()) {
+        if (wasFinalized && !task.hasFinalized()) {
             this.finalized = false;
             currentTasks.add(task);
             setChanged();
@@ -45,12 +45,6 @@ public class ComplexTaskSequential extends ComplexTask {
     }
 
     @Override
-    public boolean hasFinalized() {
-        return false;
-    }
-
-
-    @Override
     public void update(Observable o, Object arg) {
 
         Task t = (Task) o;
@@ -62,6 +56,5 @@ public class ComplexTaskSequential extends ComplexTask {
                 notifyObservers();
             }
         }
-
     }
 }
