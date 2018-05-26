@@ -1,4 +1,4 @@
-package Builder;
+package Builder.NutritionFacts;
 
 public class NutritionFacts {
 
