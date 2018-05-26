@@ -1,4 +1,4 @@
-package compositeObserver;
+package compositeObserver.Problem7;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;

@@ -1,6 +1,6 @@
 package Builder.Exam20152016;
 
-public class Figure {
+public abstract class Figure {
 
     private double x;
     private double y;

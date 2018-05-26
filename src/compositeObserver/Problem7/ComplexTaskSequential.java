@@ -1,10 +1,28 @@
-package compositeObserver;
+package compositeObserver.Problem7;
 
 import java.util.Observable;
 
-public class ComplexTaskConcurrent extends ComplexTask {
-    public ComplexTaskConcurrent(Money money, int duration) {
+public class ComplexTaskSequential extends ComplexTask {
+
+    public ComplexTaskSequential(Money money, int duration) {
         super(money, duration);
+    }
+
+
+    @Override
+    public void addSubTask(Task task) {
+
+        boolean wasFinalized = this.hasFinalized();
+        this.taskList.add(task);
+        task.addObserver(this);
+
+        if (wasFinalized && !task.hasFinalized()) {
+            this.finalized = false;
+            currentTasks.add(task);
+            setChanged();
+            notifyObservers();
+        }
+
     }
 
     @Override
@@ -16,27 +34,21 @@ public class ComplexTaskConcurrent extends ComplexTask {
         return this.cost;
     }
 
+
     @Override
     public int durationInDays() {
-
-        int max = 0;
         for (Task t: this.taskList) {
-            if (t.durationInDays() > max) max = t.durationInDays();
+            this.duration += t.durationInDays();
         }
-        return max;
+
+        return this.duration;
     }
 
     @Override
     public void update(Observable o, Object arg) {
 
         Task t = (Task) o;
-        if (t.hasFinalized() && t.durationInDays() == this.durationInDays()) {
-            this.currentTasks.clear();
-            this.finalized = true;
-            setChanged();
-            notifyObservers();
-
-        } else {
+        if (t.hasFinalized()) {
             this.currentTasks.remove(t);
             if (currentTasks.isEmpty()) {
                 this.finalized = true;
@@ -44,6 +56,5 @@ public class ComplexTaskConcurrent extends ComplexTask {
                 notifyObservers();
             }
         }
-
     }
 }

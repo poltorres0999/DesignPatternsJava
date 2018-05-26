@@ -1,4 +1,4 @@
-package compositeObserver;
+package compositeObserver.Problem7;
 
 public class SimpleTask extends Task {
 
