@@ -36,10 +36,9 @@ public class Drawing extends Figure {
         private final double y;
         private List<Figure> figures;
 
-        public drowingBuilder(double x, double y, List<Figure> figures) {
+        public drowingBuilder(double x, double y) {
             this.x = x;
             this.y = y;
-            this.figures = figures;
         }
 
         public drowingBuilder addFigure(Figure figure) {
