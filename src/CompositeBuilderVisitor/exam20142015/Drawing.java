@@ -1,6 +1,7 @@
 package CompositeBuilderVisitor.exam20142015;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Drawing extends Figure {
@@ -15,6 +16,17 @@ public class Drawing extends Figure {
     public Drawing(drowingBuilder db) {
         super(db.x, db.y);
         this.figures = db.figures;
+
+    }
+
+    public List<Figure> getFigures() {
+        return Collections.unmodifiableList(this.figures);
+    }
+
+    @Override
+    public void accept(Visitor v) {
+
+        v.visit(this);
 
     }
 
@@ -44,6 +56,6 @@ public class Drawing extends Figure {
             return new Drawing(this);
 
         }
-
     }
+
 }
