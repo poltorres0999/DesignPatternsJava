@@ -40,7 +40,17 @@ public class AreaDoubler implements Visitor {
             drawing = db.create();
 
         }
+    }
 
+    public Circle getCircle() {
+        return circle;
+    }
 
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
+
+    public Drawing getDrawing() {
+        return drawing;
     }
 }
